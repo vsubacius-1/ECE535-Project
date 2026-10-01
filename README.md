@@ -1,8 +1,8 @@
 # Timing Synchronization Via Sensing
 
 **ECE 535/635 · UMass Amherst**
-Instructor: Fatima Anwar
-Team: Vytas Subacius, Phu Nguyen, Liam Earle, Sze Nga Wong
+**Instructor:** Fatima Anwar
+**Team:** Vytas Subacius, Phu Nguyen, Liam Earle, Sze Nga Wong
 
 We planned to attempt creating a more resource efficient time sync protocol than current timing services, hoping to contribute to the future of network embedded systems world with our experience in embedded systems, Linux, and machine learning (ML).
 
