@@ -1,6 +1,6 @@
 # Timing Synchronization Via Sensing
 
-**EC-ENG 535/635 — Fall 2026 Course Project · UMass Amherst**
+**ECE 535/635 · UMass Amherst**
 Instructor: Fatima Anwar
 Team: Vitas Subacius, Phu Nguyen, Liam Earle, Sze Nga Wong
 
