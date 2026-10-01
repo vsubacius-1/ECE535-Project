@@ -1,8 +1,8 @@
-# [Project Title]
+# Timing Synchronization Via Sensing
 
 **EC-ENG 535/635 — Fall 2026 Course Project · UMass Amherst**
-Instructor: [Instructor name]
-Team: [Member 1], [Member 2], [Member 3], [Member 4]
+Instructor: Fatima Anwar
+Team: Vitas Subacius, Phu Nguyen, Liam Earle, Sze Nga Wong
 
 [One-sentence summary of what the project does and why it matters.]
 
