@@ -1,16 +1,16 @@
 # Timing Synchronization Via Sensing
 
-**ECE 535/635 · UMass Amherst**<br>
+**ECE 535/635 - Networked Embedded Systems Design · UMass Amherst**<br>
 **Instructor:** Fatima Anwar <br>
 **Team:** Vytas Subacius, Phu Nguyen, Liam Earle, Sze Nga Wong <br>
 
-We planned to attempt creating a more resource efficient time sync protocol than current timing services, hoping to contribute to the future of network embedded systems world with our experience in embedded systems, Linux, and machine learning (ML).
+We aim to develop a resource-efficient time synchronization protocol than existed timing services, hoping to contribute to the future of network embedded systems world with our experience in embedded systems, Linux, and machine learning (ML).
 
 ---
 
 ## 1. Motivation
 
-[Paragraph 1 — The problem: What application or setting needs this? Why does it matter? e.g., which distributed applications depend on it.]
+In recent years, smart devices and connected technologies have become increasingly integrated into everyday life. From smart homes to autonomous vehicles, these technologies require network communication and time synchronization to operate reliably and efficiently. However, existing timing services can place a significant burden on devices with limited resources.
 
 [Paragraph 2 — Why existing solutions fall short: What do current approaches cost or assume that doesn't fit the target devices or setting?]
 
@@ -76,8 +76,8 @@ flowchart LR
 ### Hardware
 | Item | Qty | Purpose |
 |---|---|---|
-| [Device / board] | [#] | [Purpose] |
-| [Device / board] | [#] | [Purpose] |
+| ESP32 | 1 | Collecting data from sensors |
+| Raspberry Pi | 1 | Run synchronization protocol |
 | [Sensor] | [#] | [Purpose] |
 | [Sensor *(optional)*] | [#] | [Purpose] |
 | [Misc: cables, breadboards, power] | — | [Purpose] |
