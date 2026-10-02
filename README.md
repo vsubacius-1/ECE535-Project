@@ -4,7 +4,7 @@
 **Instructor:** Fatima Anwar <br>
 **Team:** Vytas Subacius, Phu Nguyen, Liam Earle, Sze Nga Wong <br>
 
-We aim to develop a resource-efficient time synchronization protocol than existed timing services, hoping to contribute to the future of network embedded systems world with our experience in embedded systems, Linux, and machine learning (ML).
+We aim to develop a resource-efficient time synchronization protocol than existed timing services, hoping to contribute to the future world of network embedded systems with our experience in embedded systems, Linux, and machine learning (ML).
 
 ---
 
@@ -76,7 +76,7 @@ flowchart LR
 ### Hardware
 | Item | Qty | Purpose |
 |---|---|---|
-| ESP32 | 1 | Collecting data from sensors |
+| ESP32 | 2 | Collecting data from sensors |
 | Raspberry Pi | 1 | Run synchronization protocol |
 | [Sensor] | [#] | [Purpose] |
 | [Sensor *(optional)*] | [#] | [Purpose] |
