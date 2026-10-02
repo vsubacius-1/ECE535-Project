@@ -37,11 +37,6 @@ In recent years, smart devices and connected technologies have become increasing
 
 [Insert block diagram here — Mermaid diagram, image (`![diagram](system_block.png)`), or ASCII.]
 
-```mermaid
-flowchart LR
-    A[Block A] --> B[Block B]
-    B --> C[Block C]
-```
 
 ### Block descriptions
 
