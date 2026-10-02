@@ -35,7 +35,7 @@ In recent years, smart devices and connected technologies have become increasing
 
 ## 4. System Blocks
 
-[Insert block diagram here — Mermaid diagram, image (`![diagram](system_block.png)`), or ASCII.]
+![System Blocks](system_block.png)
 
 
 ### Block descriptions
