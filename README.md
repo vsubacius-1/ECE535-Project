@@ -37,16 +37,7 @@ In recent years, smart devices and connected technologies have become increasing
 
 ![System Blocks](system_block.png)
 
-
-### Block descriptions
-
-- **[Block 1 name]:** [What it does, what runs on it, inputs/outputs.]
-- **[Block 2 name]:** [Description]
-- **[Block 3 name]:** [Description]
-- **[Block 4 name]:** [Description]
-- **[Block 5 name]:** [Description]
-
-## 6. Hardware / Software Requirements
+## 5. Hardware / Software Requirements
 
 ### Hardware
 | Item | Qty | Purpose |
@@ -62,7 +53,7 @@ In recent years, smart devices and connected technologies have become increasing
 - **Raspberry Pi:** Linux/Ubuntu, Python 
 - **Collaboration:** Git/Github
 
-## 7. Team Members and Responsibilities
+## 6. Team Members and Responsibilities
 
 Lead roles to assign: **Setup, Software, Networking, Writing, Research, Algorithm Design** (each member leads one or two; everyone contributes across the project).
 
@@ -73,7 +64,7 @@ Lead roles to assign: **Setup, Software, Networking, Writing, Research, Algorith
 | [Name 3] | **[Role]** | [Specific tasks] |
 | [Name 4] | **[Role]**, **[Role]** | [Specific tasks] |
 
-## 8. Project Timeline
+## 7. Project Timeline
 
 | Week | Dates | Milestone |
 |---|---|---|
@@ -89,19 +80,9 @@ Lead roles to assign: **Setup, Software, Networking, Writing, Research, Algorith
 | 10 | [Dates] | [Visualizations, demo prep, report draft] |
 | 11 | [Dates] | **Final demo and report** |
 
-## 9. References
+## 8. References
 
 **Provided project references**
 1. [Adeel Nasrullah; Fatima M Anwar], "[HAEST: harvesting Ambient Events to Synchronize Time across Heterogeneous loT Devices]," *[IEEE]*, [2024].
 2. [Lex Fridman a; Daniel E. Brown a; William Angell a; Irman Abdić a; Bryan Reimer a, Hae Young Noh], "[Automated Synchronization of Driving Data Using Vibration and Steering Events]," *[ScienceDirect]*, [2016].
 3. [Sandeep Singh Sandha; Joseph Noor; Fatima M. Anwar; Mani Srivastava], "[Exploiting Smartphone Peripherals for Precise Time Synchronization]," *[IEEE]*, [2019].
-
-**Additional related work**
-
-4. [Author(s)], "[Title]," *[Venue]*, [Year].
-5. [Author(s)], "[Title]," *[Venue]*, [Year].
-
-**Tools / documentation**
-
-6. [Tool or documentation name], [URL]
-7. [Tool or documentation name], [URL]
