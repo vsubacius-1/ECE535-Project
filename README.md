@@ -10,20 +10,16 @@ We aim to develop a resource-efficient time synchronization protocol than existe
 
 ## 1. Motivation
 
-In recent years, smart devices and connected technologies have become increasingly integrated into everyday life. From smart homes to autonomous vehicles, these technologies require network communication and time synchronization to operate reliably and efficiently. However, existing timing services can place a significant burden on devices with limited resources.
+In recent years, smart devices and connected technologies have become increasingly integrated into everyday life. From smart homes to autonomous vehicles, these technologies require network communication and time synchronization to operate reliably and efficiently. However, existing timing services can place a significant burden on devices with limited resources. Therefore, we want to leverage this time-stamped sensor data to synchronize the sensing devices.
 
-[Paragraph 2 — Why existing solutions fall short: What do current approaches cost or assume that doesn't fit the target devices or setting?]
-
-[Paragraph 3 — The opportunity: What existing resource, data, or observation can be leveraged instead?]
-
-**Our idea:** [One or two sentences stating the core approach of the project.]
+**Our idea:** We will utilize ESP32 to collecting data from a sound and a motion sensor then Raspberry Pi will received and run the synchronization protocol.
 
 ## 2. Design Goals
 
 | Goal | Description |
 |---|---|
-| **[Goal 1 name]** | [What the system must achieve and how you'll know it did.] |
-| **[Goal 2 name]** | [Description] |
+| **Resource-efficient** | Real time processing on Raspberry Pi < 5%, Bandwith = 0, ESP32 CPU Usage < 1% |
+| **Precision** | +/- 1 milliseconds |
 | **[Goal 3 name — accuracy/performance target]** | [Quantitative target, e.g., "< X ms error after Y minutes."] |
 | **[Goal 4 name]** | [Description] |
 | **[Goal 5 name — robustness]** | [Description] |
@@ -76,17 +72,16 @@ flowchart LR
 ### Hardware
 | Item | Qty | Purpose |
 |---|---|---|
-| ESP32 | 2 | Collecting data from sensors |
-| Raspberry Pi | 1 | Run synchronization protocol |
-| [Sensor] | [#] | [Purpose] |
-| [Sensor *(optional)*] | [#] | [Purpose] |
-| [Misc: cables, breadboards, power] | — | [Purpose] |
+| ESP32 | 2 | Collecting Data From Sensors |
+| Raspberry Pi | 1 | Received and Run Synchronization Protocol |
+| KY-037 | 1 | Sound Detection |
+| HC-SR501 | 1 | Motion Detection|
+| Breadboards & Jumper Cables | — | Connect Components |
 
 ### Software
-- **[Component 1, e.g., device firmware]:** [Language, framework, libraries]
-- **[Component 2, e.g., gateway/server]:** [Language, libraries]
-- **[Component 3, e.g., analysis/visualization]:** [Tools]
-- **Collaboration:** [e.g., Git/GitHub, issue tracker, shared drive]
+- **Computer:** ArduinoIDE, C/C++, Python
+- **Raspberry Pi:** Linux/Ubuntu, Python 
+- **Collaboration:** Git/Github
 
 ## 7. Team Members and Responsibilities
 
