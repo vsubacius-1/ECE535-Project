@@ -19,7 +19,7 @@ In recent years, smart devices and connected technologies have become increasing
 | Goal | Description |
 |---|---|
 | **Resource-efficient** | Real time processing on Raspberry Pi < 5%, Bandwith = 0, ESP32 CPU Usage < 1% |
-| **Precision** | +/- 1 milliseconds |
+| **Precision** | +/- 1 ms |
 | **[Goal 3 name — accuracy/performance target]** | [Quantitative target, e.g., "< X ms error after Y minutes."] |
 | **[Goal 4 name]** | [Description] |
 | **[Goal 5 name — robustness]** | [Description] |
@@ -50,22 +50,6 @@ flowchart LR
 - **[Block 3 name]:** [Description]
 - **[Block 4 name]:** [Description]
 - **[Block 5 name]:** [Description]
-
-## 5. Approach and Evaluation Plan
-
-**Phase A: [Phase name, e.g., Baselines and characterization]**
-- [Step / experiment]
-- [Step / experiment]
-
-**Phase B: [Phase name, e.g., Core system implementation]**
-- [Step / experiment]
-- [Step / experiment]
-
-**Metrics**
-- [Metric 1, e.g., error vs. ground truth: mean / 95th percentile / max]
-- [Metric 2]
-- [Metric 3]
-- [Metric 4]
 
 ## 6. Hardware / Software Requirements
 
