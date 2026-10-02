@@ -18,20 +18,18 @@ In recent years, smart devices and connected technologies have become increasing
 
 | Goal | Description |
 |---|---|
-| **Resource-efficient** | Real time processing on Raspberry Pi < 5%, Bandwith = 0, ESP32 CPU Usage < 1% |
+| **Processor Efficiency** | Real time processing on Raspberry Pi < 5%, ESP32 CPU Usage < 1% |
 | **Precision** | +/- 1 ms |
-| **[Goal 3 name — accuracy/performance target]** | [Quantitative target, e.g., "< X ms error after Y minutes."] |
-| **[Goal 4 name]** | [Description] |
-| **[Goal 5 name — robustness]** | [Description] |
+| **Network Usage** | Low Bandwidth
+| **Power Efficiency** | Low Power Usage
+
 
 ## 3. Deliverables
 
-1. **[Deliverable 1 — from the project description]:** [What exactly will be produced and how it will be measured.]
-2. **[Deliverable 2 — from the project description]:** [Description]
-3. **[Deliverable 3 — core system/protocol]:** [Description]
-4. **[Deliverable 4 — evaluation setup]:** [Description]
-5. **[Deliverable 5 — visualizations / demo]:** [What the final demo will show.]
-6. **[Deliverable 6 — final report and documented code]**
+1. **Deliverable 1** - Characterize network delay between Raspberry Pi and the edge device
+2. **Deliverable 2** - Estimate the relative clock drive between devices
+3. **Deliverable 3** - Visualization of delay, offset, and drift relative to time 
+
 
 ## 4. System Blocks
 
@@ -59,17 +57,17 @@ Lead roles to assign: **Setup, Software, Networking, Writing, Research, Algorith
 
 | Member | Lead role(s) | Responsibilities |
 |---|---|---|
-| [Name 1] | **[Role]**, **[Role]** | [Specific tasks this person owns] |
-| [Name 2] | **[Role]** | [Specific tasks] |
-| [Name 3] | **[Role]** | [Specific tasks] |
-| [Name 4] | **[Role]**, **[Role]** | [Specific tasks] |
+| Sze Nga Wong | **Hardware Setup**, **Software** | Building sensing and timestamp hardware  |
+| Liam Earle | **Networking**, **Software** | Implement BLE links between ESP32 and Pi and network characterization |
+| Phu Nguyen | **Algorithm Design**, **Software** | Designing Synchronization Algorithm and implementation |
+| Vytas Subacius | **Writing & Research**, **Software**| Research related work and implement software   |
 
 ## 7. Project Timeline
 
 | Week | Dates | Milestone |
 |---|---|---|
 | 1 | [Sep 28 – Oct 3] | Team formed, project selected, repo submitted on Canvas (**Oct 3**) |
-| 2 | [Dates] | [Milestone] |
+| 2 | Oct 5 | [Milestone] |
 | 3 | [Dates] | [Milestone] |
 | 4 | [Dates] | [Milestone] |
 | 5 | [Dates] | [Milestone — Deliverable 1] |
