@@ -1,33 +1,33 @@
-# Timing Synchronization Via Sensing
+# Timing Synchronization via Sensing
 
 **ECE 535/635 - Networked Embedded Systems Design · UMass Amherst**<br>
 **Instructor:** Fatima Anwar <br>
 **Team:** Vytas Subacius, Phu Nguyen, Liam Earle, Sze Nga Wong <br>
 
-We aim to develop a resource-efficient time synchronization protocol than existed timing services, hoping to contribute to the future world of network embedded systems with our experience in embedded systems, Linux, and machine learning (ML).
+We aim to develop a resource-efficient time synchronization protocol than existing timing services, hoping to contribute to the future world of network embedded systems with our experience in embedded systems, Linux, and machine learning (ML).
 
 ---
 
 ## 1. Motivation
 
-In recent years, smart devices and connected technologies have become increasingly integrated into everyday life. From smart homes to autonomous vehicles, these technologies require network communication and time synchronization to operate reliably and efficiently. However, existing timing services can place a significant burden on devices with limited resources. Therefore, we want to leverage this time-stamped sensor data to synchronize the sensing devices.
+In recent years, smart devices and connected technologies have become increasingly integrated into everyday life. From smart homes to autonomous vehicles, these technologies require network communication and time synchronization to operate reliably and efficiently. However, existing timing services can place a significant burden on devices with limited resources. Therefore, we want to leverage the time-stamped sensor data to synchronize the sensing devices.
 
-**Our idea:** We will utilize ESP32 to collecting data from a sound and a motion sensor then Raspberry Pi will received and run the synchronization protocol.
+**Our idea:** We will utilize two ESP32s to capture the same event using deferent sensing modalities: sound and vibration.These events will be time-stamped and sent to the Raspberry Pi, which will receive the time-stamped sensor data and run the synchronization protocol.
 
 ## 2. Design Goals
 
 | Goal | Description |
 |---|---|
-| **Processor Efficiency** | Real time processing on Raspberry Pi < 5%, ESP32 CPU Usage < 1% |
-| **Precision** | +/- 1 ms |
-| **Network Usage** | Low Bandwidth
-| **Power Efficiency** | Low Power Usage
+| **Processor Efficiency** | Pi CPU usage < 5% during real-time processing and ESP32 CPU usage < 1% |
+| **Precision** | Mean absolute error < 1 ms |
+| **Network Usage** | No extra sync traffic on ESP32 |
+| **Power Efficiency** | < 5% extra current draw compared to sensor-only baseline |
 
 
 ## 3. Deliverables
 
 1. **Deliverable 1** - Characterize network delay between Raspberry Pi and the edge device
-2. **Deliverable 2** - Estimate the relative clock drive between devices
+2. **Deliverable 2** - Estimate the relative clock drift between devices
 3. **Deliverable 3** - Visualization of delay, offset, and drift relative to time 
 
 
@@ -41,9 +41,10 @@ In recent years, smart devices and connected technologies have become increasing
 | Item | Qty | Purpose |
 |---|---|---|
 | ESP32 | 2 | Collecting Data From Sensors |
-| Raspberry Pi | 1 | Received and Run Synchronization Protocol |
+| Raspberry Pi | 1 | Receives and runs Synchronization Protocol |
 | KY-037 | 1 | Sound Detection |
-| HC-SR501 | 1 | Motion Detection|
+| ADXL345 | 1 | Vibration Setection |
+| USB Logical Analyzer | 1 | Event and clock truth
 | Breadboards & Jumper Cables | — | Connect Components |
 
 ### Software
@@ -69,12 +70,12 @@ Lead roles to assign: **Setup, Software, Networking, Writing, Research, Algorith
 | 1 | Sep 28 – Oct 3 | Team formed, project selected, repo submitted on Canvas |
 | 2 | Oct 5 - Oct 10| Hardware setup and development environments working |
 | 3 | Oct 12 - Oct 17 | Wire the sensors to ESP32s, and get BLE link working between ESP32s and Raspberry Pi |
-| 4 | Oct 19 - Oct 24 | Stream timestamped data from both ESP32s to the Raspberry Pi, set up logging and test sensor response time |
+| 4 | Oct 19 - Oct 24 | Stream timestamped data from both ESP32s to the Raspberry Pi, set up logging and test sensor response time against ground-truth reference |
 | 5 | Oct 26 - Oct 31 | Deliverable 1 - Measure network delay and jitter |
 | 6 | Nov 2 - Nov 7 | Deliverable 2 - Long-run clock drift measurement and drift estimate |
-| 7 | Nov 9 - Nov 14 | Detect sound and motion events on each ESP32 and pair up the detections of the same events |
+| 7 | Nov 9 - Nov 14 | Detect sound and vibration events on each ESP32 and pair up the detections of the same events |
 | 8 | Nov 16 - Nov 21 | Synchronization algorithm running on the Raspberry Pi |
-| 9 | Nov 23 - Nov 28 | Evaluate the +/- 1 ms goal and measure CPU usage on the ESP32 and Raspberry Pi|
+| 9 | Nov 23 - Nov 28 | Evaluate the mean absolute error < 1 ms goal against ground truth and measure CPU usage on the ESP32 and Raspberry Pi|
 | 10 | Nov 30 - Dec 5 | Deliverable 3 - Plots of delay, offset and drift over time |
 | 11 | Dec 7 - Dec 12 | Final demo and report |
 
