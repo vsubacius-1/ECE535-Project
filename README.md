@@ -66,17 +66,17 @@ Lead roles to assign: **Setup, Software, Networking, Writing, Research, Algorith
 
 | Week | Dates | Milestone |
 |---|---|---|
-| 1 | [Sep 28 – Oct 3] | Team formed, project selected, repo submitted on Canvas (**Oct 3**) |
-| 2 | Oct 5 | [Milestone] |
-| 3 | [Dates] | [Milestone] |
-| 4 | [Dates] | [Milestone] |
-| 5 | [Dates] | [Milestone — Deliverable 1] |
-| 6 | [Dates] | [Milestone — Deliverable 2] |
-| 7 | [Dates] | [Milestone — project check-in] |
-| 8 | [Dates] | [Milestone] |
-| 9 | [Dates] | [Milestone] |
-| 10 | [Dates] | [Visualizations, demo prep, report draft] |
-| 11 | [Dates] | **Final demo and report** |
+| 1 | Sep 28 – Oct 3 | Team formed, project selected, repo submitted on Canvas |
+| 2 | Oct 5 - Oct 10| Hardware setup and development environments working |
+| 3 | Oct 12 - Oct 17 | Wire the sensors to ESP32s, and get BLE link working between ESP32s and Raspberry Pi |
+| 4 | Oct 19 - Oct 24 | Stream timestamped data from both ESP32s to the Raspberry Pi, set up logging and test sensor response time |
+| 5 | Oct 26 - Oct 31 | Deliverable 1 - Measure network delay and jitter |
+| 6 | Nov 2 - Nov 7 | Deliverable 2 - Long-run clock drift measurement and drift estimate |
+| 7 | Nov 9 - Nov 14 | Detect sound and motion events on each ESP32 and pair up the detections of the same events |
+| 8 | Nov 16 - Nov 21 | Synchronization algorithm running on the Raspberry Pi |
+| 9 | Nov 23 - Nov 28 | Evaluate the +/- 1 ms goal and measure CPU usage on the ESP32 and Raspberry Pi|
+| 10 | Nov 30 - Dec 5 | Deliverable 3 - Plots of delay, offset and drift over time |
+| 11 | Dec 7 - Dec 12 | Final demo and report |
 
 ## 8. References
 
