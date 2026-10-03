@@ -81,6 +81,6 @@ Lead roles to assign: **Setup, Software, Networking, Writing, Research, Algorith
 ## 8. References
 
 **Provided project references**
-1. [Adeel Nasrullah; Fatima M Anwar], "[HAEST: harvesting Ambient Events to Synchronize Time across Heterogeneous loT Devices]," *[IEEE]*, [2024].
-2. [Lex Fridman a; Daniel E. Brown a; William Angell a; Irman Abdić a; Bryan Reimer a, Hae Young Noh], "[Automated Synchronization of Driving Data Using Vibration and Steering Events]," *[ScienceDirect]*, [2016].
-3. [Sandeep Singh Sandha; Joseph Noor; Fatima M. Anwar; Mani Srivastava], "[Exploiting Smartphone Peripherals for Precise Time Synchronization]," *[IEEE]*, [2019].
+1. Adeel Nasrullah; Fatima M Anwar, "HAEST: harvesting Ambient Events to Synchronize Time across Heterogeneous loT Devices", *IEEE*, 2024.
+2. Lex Fridman a; Daniel E. Brown a; William Angell a; Irman Abdić a; Bryan Reimer a, Hae Young Noh, "Automated Synchronization of Driving Data Using Vibration and Steering Events", *ScienceDirect*, 2016.
+3. Sandeep Singh Sandha; Joseph Noor; Fatima M. Anwar; Mani Srivastava, "Exploiting Smartphone Peripherals for Precise Time Synchronization", *IEEE*, 2019.
