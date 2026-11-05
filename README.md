@@ -43,7 +43,7 @@ In recent years, smart devices and connected technologies have become increasing
 | ESP32 | 2 | Collecting Data From Sensors |
 | Raspberry Pi | 1 | Receives and runs Synchronization Protocol |
 | KY-037 | 1 | Sound Detection |
-| ADXL345 | 1 | Vibration Setection |
+| ADXL345 | 1 | Vibration Detection |
 | USB Logical Analyzer | 1 | Event and clock truth
 | Breadboards & Jumper Cables | — | Connect Components |
 
