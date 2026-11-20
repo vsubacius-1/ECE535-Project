@@ -21,6 +21,10 @@ Usage:
 --bias-us is the calibrated (sound delay - ACU delay) for your reference tap position.
 Measure it once with the logic analyzer. See SYNC.md.
 
+Truth: if the CSV has truth-pulse packets (trigger = 2, from truth_pulse.py and the
+v3/v2 sketches), sync.py pairs them and uses them as truth automatically. Pulse
+packets are never used as events. --truth FILE overrides them.
+
 Needs numpy. --plot also needs matplotlib.
 """
 
@@ -57,6 +61,7 @@ class Config:
     coarse_bin_s: float = 2.0        # envelope bin for the coarse node -> Pi mapping
     pattern_window_s: float = 120.0  # --pairing pattern: window length
     pattern_tol_us: float = 10000.0  # --pairing pattern: match tolerance
+    truth_match_s: float = 0.4       # pair truth pulses from the two nodes within this
     # Calibration
     bias_us: float = 0.0             # (sound delay - ACU delay) of the reference group
     # Kalman filter
@@ -569,6 +574,8 @@ class OnlineSync:
         self.packet_meas = []  # (t, z)
         self.est = make_estimators(cfg, methods)
         self.n_packets = 0
+        self.truth_open = {n: [] for n in NODES}  # unmatched pulses: (t_pi, t_edge)
+        self.truth_pairs = []                      # (t_pi, t_acu, t_sound)
 
     def on_packet(self, p):
         if self.t0_us is None:
@@ -581,7 +588,12 @@ class OnlineSync:
         done = self.kfbin[p.node].add(t, u)
         if done is not None:
             self._bin_done(p.node, *done)
-        if p.trigger and p.t_edge > 0 and self.det[p.node].is_new(p.t_edge):
+        if p.trigger == 2:  # truth pulse: evaluation only, never an event
+            if p.t_edge > 0:
+                t_pi = (p.t_edge - self.coarse[p.node].value() - self.t0_us) / 1e6
+                self._truth_pulse(p.node, t_pi, p.t_edge)
+            return
+        if p.trigger == 1 and p.t_edge > 0 and self.det[p.node].is_new(p.t_edge):
             t_pi = (p.t_edge - self.coarse[p.node].value() - self.t0_us) / 1e6
             ev = Event(p.node, t_pi, p.t_edge, p.level)
             self.events[p.node].append(ev)
@@ -591,6 +603,22 @@ class OnlineSync:
         if self.auto_pair:
             for a, s in self.pairer.resolve(self.now):
                 self.add_pair(a, s)
+
+    def _truth_pulse(self, node, t_pi, t_edge):
+        """Pair a truth pulse with the other node's pulse of the same instant."""
+        other = NODE_SOUND if node == NODE_ACU else NODE_ACU
+        cands = [x for x in self.truth_open[other] if abs(x[0] - t_pi) <= self.cfg.truth_match_s]
+        if len(cands) == 1:
+            self.truth_open[other].remove(cands[0])
+            if node == NODE_ACU:
+                self.truth_pairs.append((t_pi, t_edge, cands[0][1]))
+            else:
+                self.truth_pairs.append((cands[0][0], cands[0][1], t_edge))
+        else:
+            self.truth_open[node].append((t_pi, t_edge))
+        keep = self.now - 10.0
+        for n in NODES:
+            self.truth_open[n] = [x for x in self.truth_open[n] if x[0] >= keep]
 
     def _bin_done(self, node, k, umax, n):
         c = self.cfg
@@ -693,6 +721,14 @@ def truth_to_pi(rows, truth, t0_us):
         umax = u[max(0, i - 40):i + 40].max()
         out.append(((ta - umax - t0_us) / 1e6, float(ts - ta)))
     return out
+
+
+def truth_from_csv(rows, cfg):
+    """Truth pairs (t_acu_us, t_sound_us) from the truth-pulse packets (trigger = 2)."""
+    s = OnlineSync(cfg, methods=(), auto_pair=False)
+    for p in rows:
+        s.on_packet(p)
+    return [(ta, ts) for _t, ta, ts in s.truth_pairs]
 
 
 def replay(rows, cfg, truth=None, pairing="coarse", grid_s=5.0, methods=METHODS):
@@ -904,6 +940,7 @@ def follow(path, cfg, every_s=5.0):
     cpu0, wall0 = time.process_time(), time.monotonic()
     last = wall0
     buf = ""
+    errs, n_truth = [], 0  # live error against truth pulses (event mode only)
     with open(path, newline="") as f:
         while True:
             chunk = f.readline()
@@ -915,6 +952,12 @@ def follow(path, cfg, every_s=5.0):
                 buf = ""
                 if p is not None:
                     sync.on_packet(p)
+                    while n_truth < len(sync.truth_pairs):
+                        t_pi, ta, ts = sync.truth_pairs[n_truth]
+                        n_truth += 1
+                        e = sync.estimate(t_pi)["ours_hybrid"]
+                        if e and e["mode"] == "event":
+                            errs.append(e["offset_us"] - (ts - ta))
                 continue
             now = time.monotonic()
             if now - last >= every_s and sync.t0_us is not None:
@@ -926,7 +969,9 @@ def follow(path, cfg, every_s=5.0):
                     print(f"t={sync.now:8.1f}s offset={e['offset_us']:14.0f} us "
                           f"+/-{e['sigma_us']:6.0f}  drift={e['drift_ppm']:7.2f} ppm  "
                           f"mode={e['mode']:6} groups={len(kf.groups)} pairs={len(sync.pairs)} "
-                          f"cpu={cpu:.2f}%", flush=True)
+                          f"cpu={cpu:.2f}%" +
+                          (f"  truth: last err={errs[-1]:+.0f} us, MAE={np.mean(np.abs(errs)):.0f} us "
+                           f"(n={len(errs)})" if errs else ""), flush=True)
                 else:
                     print(f"t={sync.now:8.1f}s waiting for data, cpu={cpu:.2f}%", flush=True)
             time.sleep(0.2)
@@ -968,7 +1013,12 @@ def main(argv=None):
     if len(rows) < 10:
         print("not enough packets in the CSV", file=sys.stderr)
         return 1
-    truth = load_truth(args.truth) if args.truth else None
+    if args.truth:
+        truth = load_truth(args.truth)
+    else:
+        truth = truth_from_csv(rows, cfg) or None
+        if truth:
+            print(f"Truth: {len(truth)} truth-pulse pairs from the CSV")
     sync, records = replay(rows, cfg, truth=truth, pairing=args.pairing)
     summary(sync, records)
     if args.out:
