@@ -29,10 +29,10 @@
 const char* BLE_DEVICE_NAME = "TSN-ACU";
 
 #define SERVICE_UUID \
-"5255e10a-a3b8-4ba4-903e-d393541e92df"
+"CA89474F-D5F8-44BB-8926-DD4B58A44E2D"
 
 #define DATA_CHAR_UUID \
-"8ef8eb63-4406-4d27-b44e-b41ce16723f2"
+"0E76AAE8-1EE4-456A-9708-DE09E78F4BCA"
 
 // ---- Packet Configuration ----
 const uint8_t PACKET_VERSION = 1;
