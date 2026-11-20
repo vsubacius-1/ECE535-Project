@@ -1,0 +1,4 @@
+pi_rx_ns,kind,node,offset_us,skew_ppm,n,spread_us,ble_offset_us,delay_p50_us,delay_p95_us,delay_max_us,t_ref_us,t_node_us,residual_us
+616008134373,clock,2,564803252.0,0.000,1,0.0,,27596.5,40072.4,41327.3,,,
+650057829371,clock,1,564813608.3,0.000,1,0.0,,26186.0,28058.6,28058.6,,,
+650057829371,clock,2,564798378.9,0.000,1,0.0,,26181.5,79536.3,79536.3,,,
