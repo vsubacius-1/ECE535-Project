@@ -35,7 +35,8 @@ import time
 from bleak import BleakClient, BleakScanner
 
 DEFAULT_NAMES = ["TSN-Sound", "TSN-ACU"]
-DATA_CHAR_UUID = "8ef8eb63-4406-4d27-b44e-b41ce16723f2"
+
+DATA_CHAR_UUID = "0E76AAE8-1EE4-456A-9708-DE09E78F4BCA"
 
 PACKET_FMT = "<BBHQQQHHB"  # little-endian, no padding
 PACKET_SIZE = struct.calcsize(PACKET_FMT)  # 33
